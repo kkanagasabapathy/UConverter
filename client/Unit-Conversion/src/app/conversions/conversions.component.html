@@ -1,0 +1,140 @@
+<div class="py-5">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="mb-0 h3 mb-3 font-weight-normal">Conversion Results</h3>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-2 text-uppercase font-weight-bold text-left">
+          Input Numerical Value
+        </div>
+        <div class="col-md-2 text-uppercase font-weight-bold text-left">
+          Input Unit of Measure
+        </div>
+        <div class="col-md-2 text-uppercase font-weight-bold text-left">
+          Target Unit of Measure
+        </div>
+        <div class="col-md-2 text-uppercase font-weight-bold text-left">
+          Student Response
+        </div>
+        <div class="col-md-2 text-uppercase font-weight-bold text-left">
+          Output
+        </div>
+        <div class="col-md-2 text-uppercase font-weight-bold text-left">
+          Actions
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <form
+          [formGroup]="conversionForm"
+          (ngSubmit)="checkStudentResponses()"
+          style="width: 100%;"
+        >
+          <div
+            formArrayName="entries"
+            *ngFor="
+              let item of conversionForm?.get('entries')?.controls;
+              let i = index
+            "
+          >
+            <div [formGroupName]="i">
+              <div class="row">
+                <div class="col-md-2">
+                  <input
+                    class="form-control"
+                    formControlName="inputValue"
+                    placeholder="0.00"
+                  />
+                </div>
+                <div class="col-md-2">
+                  <select
+                    type="text"
+                    formControlName="inputUnit"
+                    class="form-control"
+                  >
+                    <option value="null">Input Unit</option>
+                    <option *ngFor="let unit of units" value="{{ unit.key }}">{{
+                      unit.value
+                    }}</option>
+                  </select>
+                </div>
+                <div class="col-md-2">
+                  <select
+                    type="text"
+                    formControlName="targetUnit"
+                    class="form-control"
+                  >
+                    <option value="null">Target Unit</option>
+                    <option *ngFor="let unit of units" value="{{ unit.key }}">{{
+                      unit.value
+                    }}</option>
+                  </select>
+                </div>
+                <div class="col-md-2">
+                  <input
+                    class="form-control"
+                    formControlName="studentResponse"
+                    placeholder="0.00"
+                  />
+                </div>
+                <div class="col-md-2">
+                  <span
+                    [ngClass]="{
+                      invalid: item.controls.output.value === 'Invalid'
+                    }"
+                    >{{
+                      item.controls.output.value
+                        ? item.controls.output.value
+                        : "Submit for Results"
+                    }}</span
+                  >
+                </div>
+                <div class="col-md-2">
+                  <button class="btn btn-success" (click)="addNewEntry()">
+                    Add
+                  </button>
+                  &nbsp;
+                  <button class="btn btn-danger" (click)="deleteEntry(i)">
+                    Delete
+                  </button>
+                </div>
+              </div>
+              <br />
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-md-12">
+              <span
+                *ngIf="!conversionForm.pristine && conversionForm.invalid"
+                style="color:red"
+                ><i
+                  >Submit button will be disabled till all fields are entered</i
+                ></span
+              >
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-md-6">
+              <button
+                class="btn btn-success"
+                style="float: right;"
+                type="submit"
+                [disabled]="conversionForm.invalid"
+              >
+                Submit
+              </button>
+            </div>
+            <div class="col-md-6">
+              <button class="btn btn-danger" (click)="resetForm()" type="reset">
+                Reset
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
