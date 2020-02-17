@@ -23,6 +23,7 @@ Visual Studio Code: download https://code.visualstudio.com/
    - \$ npm install to install
    - ng serve --open OR npm start
    - go to the browser http://localhost:4200/
+   - http://localhost:4200/conversions 
 
 3. Dependency installation and run Server
    - Navigate to the following path : ../UConverter/server
