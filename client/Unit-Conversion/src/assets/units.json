@@ -1,0 +1,42 @@
+[
+  {
+    "key": "kel",
+    "value": "Kelvin"
+  },
+  {
+    "key": "cel",
+    "value": "Celsius"
+  },
+  {
+    "key": "fah",
+    "value": "Fahrenheit"
+  },
+  {
+    "key": "ran",
+    "value": "Rankine"
+  },
+  {
+    "key": "lit",
+    "value": "Liters"
+  },
+  {
+    "key": "tab",
+    "value": "Tablespoons"
+  },
+  {
+    "key": "cui",
+    "value": "Cubic-inches"
+  },
+  {
+    "key": "cup",
+    "value": "Cups"
+  },
+  {
+    "key": "cuf",
+    "value": "Cubic-feet"
+  },
+  {
+    "key": "gal",
+    "value": "Gallons"
+  }
+]
